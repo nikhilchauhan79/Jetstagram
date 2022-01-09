@@ -1,14 +1,27 @@
 package com.example.jetstagram.ui.screens.compose.bottomnav
 
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.AddBox
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Message
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.VideoLibrary
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.jetstagram.R
@@ -31,7 +44,7 @@ fun BottomNavigationBar(navController: NavController) {
         NavigationItem.Profile,
     )
     BottomNavigation(
-        backgroundColor = colorResource(id = R.color.purple_200),
+        backgroundColor = colorResource(id = R.color.purple_500),
         contentColor = Color.White
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -63,10 +76,30 @@ fun BottomNavigationBar(navController: NavController) {
     }
 }
 
+@Preview
 @Composable
 fun TopAppBar() {
     TopAppBar(
-    ) {
-        Text(text = "Instagram", fontSize = 18.sp)
-    }
+        title = {
+            Text(
+                text = "Instagram",
+                fontFamily = FontFamily(Font(R.font.helvetica_neue_black_cond)),
+            )
+        },
+        actions = {
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    imageVector = Icons.Default.AddBox,
+                    contentDescription = "Create Post"
+                )
+            }
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    imageVector = Icons.Default.Message,
+                    contentDescription = "Direct Message"
+                )
+            }
+        },
+        backgroundColor = colorResource(id = R.color.purple_500),
+    )
 }
